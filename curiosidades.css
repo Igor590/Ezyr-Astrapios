@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  background: #020312;
+}
+
+/* fundo animado */
+.bg-animated {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 10% 0%, #4776e6 0%, #020312 35%, #0b0326 100%);
+  background-size: 250% 250%;
+  animation: zeusGradient 20s ease-in-out infinite;
+}
+
+.bg-lightning {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+.bg-flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.45), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.18s ease-out;
+  z-index: 1;
+}
+
+/* container principal */
+.curiosidades {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  padding: 4rem 1.5rem 3rem;
+}
+
+/* cabeçalho */
+.curiosidades-header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+
+.curiosidades-header h1 {
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.curiosidades-header p {
+  max-width: 520px;
+  margin: 0 auto 1.3rem;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+/* spotify no topo */
+.curiosidades-spotify {
+  max-width: 420px;
+  margin: 0.5rem auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+.curiosidades-spotify iframe {
+  width: 100%;
+  height: 80px;
+  border: none;
+}
+
+/* timeline horizontal */
+.curiosidades-timeline {
+  position: relative;
+  margin: 2.5rem auto 2rem;
+  padding: 1.5rem 0;
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.curiosidades-timeline::-webkit-scrollbar {
+  height: 6px;
+}
+.curiosidades-timeline::-webkit-scrollbar-track {
+  background: rgba(5, 10, 30, 0.8);
+}
+.curiosidades-timeline::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #4f8dff, #9f6bff);
+  border-radius: 999px;
+}
+
+/* linha central */
+.timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(124, 178, 255, 0.1),
+    rgba(159, 107, 255, 0.5),
+    rgba(124, 178, 255, 0.1)
+  );
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* cada curiosidade */
+.curio-card {
+  position: relative;
+  min-width: 260px;
+  max-width: 280px;
+  scroll-snap-align: center;
+  padding-top: 2.4rem;
+}
+
+.curio-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #9f6bff;
+  box-shadow:
+    0 0 0 4px rgba(159, 107, 255, 0.35),
+    0 0 18px rgba(159, 107, 255, 0.9);
+  transform: translate(-50%, -50%);
+}
+
+/* bloco do conteúdo */
+.curio-content {
+  position: relative;
+  padding: 1.4rem 1.3rem 1.2rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at 0 0, rgba(77, 111, 199, 0.8), rgba(7, 9, 30, 0.98));
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.7);
+  transform: translateY(-20px) rotateZ(-2deg);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+
+.curio-content::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  border: 1px solid rgba(140, 196, 255, 0.3);
+  pointer-events: none;
+}
+
+/* texto */
+.curio-content h2 {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.curio-content p {
+  font-size: 0.88rem;
+  opacity: 0.92;
+}
+
+/* hover / foco */
+.curio-card:hover .curio-content {
+  transform: translateY(-28px) rotateZ(0deg) scale(1.03);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.9);
+  background: radial-gradient(circle at 0 0, rgba(111, 170, 255, 0.95), rgba(5, 6, 24, 0.98));
+}
+
+/* link de voltar */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #c6d6ff;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.back-link::before {
+  content: "←";
+  font-size: 1.1rem;
+}
+
+.back-link:hover {
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+/* animação do degradê global */
+@keyframes zeusGradient {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .curiosidades {
+    padding-top: 3.5rem;
+  }
+
+  .curiosidades-timeline {
+    gap: 1.5rem;
+  }
+
+  .curio-content {
+    transform: translateY(-16px) rotateZ(0deg);
+  }
+
+  .curio-card:hover .curio-content {
+    transform: translateY(-22px) scale(1.02);
+  }
+
+  .curiosidades-spotify {
+    max-width: 100%;
+  }
+}

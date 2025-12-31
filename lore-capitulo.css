@@ -1,0 +1,200 @@
+/* fundo e tipografia iguais ao índice */
+body.lore-page {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f5f5f7;
+  background: radial-gradient(circle at 10% 0%, #4776e6 0%, #020312 35%, #0b0326 100%);
+  background-size: 250% 250%;
+  animation: zeusGradient 20s ease-in-out infinite;
+}
+
+@keyframes zeusGradient {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* voltar ao índice fixo */
+.lore-header {
+  position: fixed;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 60;
+}
+
+.lore-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #ffffffaa;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lore-back-arrow {
+  display: inline-block;
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.lore-back:hover {
+  color: #ffffff;
+  transform: translateX(-2px);
+}
+
+.lore-back:hover .lore-back-arrow {
+  transform: translateX(-3px);
+}
+
+/* “página” de leitura */
+.lore-shell {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.lore-book {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(5, 8, 20, 0.94);
+  border-radius: 18px;
+  padding: 2.4rem 2.6rem 2.6rem;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(16px);
+}
+
+/* cabeçalho do capítulo */
+.chapter-header {
+  margin-bottom: 1.8rem;
+}
+
+.chapter-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f4c969;
+  margin: 0 0 0.4rem;
+}
+
+.chapter-title {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+/* corpo do texto focado em leitura */
+.chapter-body {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #e3e6f5;
+}
+
+.chapter-body p {
+  margin: 0 0 1.2rem;
+  text-align: justify;
+}
+
+/* setas laterais suaves e centralizadas */
+.chapter-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease,
+              border-color 0.18s ease, color 0.18s ease;
+  z-index: 40;
+}
+
+.chapter-nav-prev { left: 1.2rem; }
+.chapter-nav-next { right: 1.2rem; }
+
+/* setinha desenhada para ficar 100% central */
+.nav-arrow {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+.nav-arrow-right {
+  border-left: 7px solid #ffffffcc;
+}
+
+.nav-arrow-left {
+  border-right: 7px solid #ffffffcc;
+}
+
+.chapter-nav:hover {
+  background: rgba(0,0,0,0.45);
+  border-color: rgba(255,255,255,0.7);
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* nav no fim do capítulo */
+.chapter-footer {
+  margin-top: 2.4rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: right;
+}
+
+.next-chapter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f5cb5c, #ffdf7f);
+  color: #111217;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.next-chapter-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+/* nome pequeno em amarelo abaixo */
+.next-chapter-name {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #f4c969;
+}
+
+/* responsivo */
+@media (max-width: 720px) {
+  .lore-shell {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .lore-book {
+    padding: 1.9rem 1.6rem 2rem;
+  }
+
+  .chapter-nav-prev { left: 0.4rem; }
+  .chapter-nav-next { right: 0.4rem; }
+
+  .chapter-nav {
+    width: 32px;
+    height: 32px;
+  }
+}

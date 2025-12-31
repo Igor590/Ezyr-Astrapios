@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Galeria do Personagem</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-animated">
+    <canvas id="lightningCanvas" class="bg-lightning"></canvas>
+    <div class="bg-flash"></div>
+
+    <section class="hero-selection">
+      <h1>GALERIA DE EZYR</h1>
+
+      <div class="card-grid">
+        <!-- Card 1 -->
+        <a href="personagem.html" class="hero-link">
+          <article class="hero-card">
+            <div class="hero-card-motion">
+              <div class="hero-card-inner hero-card-inner-1">
+                <div class="hero-card-bg hero-card-bg-1"></div>
+                <div class="hero-card-content">
+                  <h2>Ezyr Astrapios</h2>
+                  <p>Lore do Personagem.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="pagina2.html" class="hero-link">
+          <article class="hero-card">
+            <div class="hero-card-motion">
+              <div class="hero-card-inner hero-card-inner-2">
+                <div class="hero-card-bg hero-card-bg-2"></div>
+                <div class="hero-card-content">
+                  <h2>Curiosidades</h2>
+                  <p>Pequenas Curiosidades.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="pagina3.html" class="hero-link">
+          <article class="hero-card">
+            <div class="hero-card-motion">
+              <div class="hero-card-inner hero-card-inner-3">
+                <div class="hero-card-bg hero-card-bg-3"></div>
+                <div class="hero-card-content">
+                  <h2>Personalidade | Misc</h2>
+                  <p>Personalidade &amp; Outros.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+    </section>
+
+    <!-- PLAYER SPOTIFY -->
+    <div class="spotify-wrapper">
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/track/78Z2qxKiT6mrJrNR8DecZ0?utm_source=generator"
+        width="100%" height="80" frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <script src="lightning-canvas.js"></script>
+
+  <!-- randomiza atraso das animações dos cards -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const motions = document.querySelectorAll(".hero-card-motion");
+      motions.forEach(motion => {
+        const delay = (Math.random() * 10).toFixed(2); // 0–10s
+        motion.style.animationDelay = `${delay}s`;
+      });
+    });
+  </script>
+</body>
+</html>
