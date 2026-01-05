@@ -10,17 +10,25 @@ body.hero-page {
 }
 
 @keyframes zeusGradient {
-  0%   { background-position: 0% 0%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 0%; }
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
 }
 
 /* header / voltar */
 .hero-header {
-  position: fixed;       /* fica preso na janela */
+  position: fixed;
   top: 1.5rem;
   left: 2rem;
-  z-index: 50;           /* fica acima do conteúdo */
+  z-index: 50;
 }
 
 .logo-small {
@@ -57,7 +65,7 @@ body.hero-page {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   align-items: center;
-  padding: 6rem 6vw 5rem;  /* antes era 5rem; aumentei o topo */
+  padding: 6rem 6vw 5rem;
   gap: 2rem;
 }
 
@@ -130,12 +138,12 @@ body.hero-page {
 .hero-btn-primary {
   background: linear-gradient(135deg, #f5cb5c, #ffdf7f);
   color: #111217;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
 }
 
 .hero-btn-ghost {
@@ -158,18 +166,42 @@ body.hero-page {
   min-height: 400px;
 }
 
-.hero-art-bg {
-  position: absolute;
-  inset: 5% 0 0;
-  background: radial-gradient(circle at 30% 0%, #f5cb5c44, transparent 55%);
-  opacity: 0.9;
+/* figure para a arte + crédito */
+.hero-art-figure {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
 }
 
+/* quadro com borda suave e brilho leve */
 .hero-art-image {
   position: relative;
   max-width: 520px;
   width: 100%;
-  filter: drop-shadow(0 28px 70px rgba(0,0,0,0.85));
+  border-radius: 18px;
+  background: #070814;
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(244, 201, 105, 0.16);
+}
+
+/* se a imagem tiver fundo próprio, garante que não distorce */
+.hero-art-image {
+  object-fit: contain;
+}
+
+/* crédito embaixo */
+.hero-art-credit {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffffcc;
+}
+
+.hero-art-credit span {
+  color: #f4c969;
 }
 
 /* responsivo */
@@ -182,5 +214,9 @@ body.hero-page {
 
   .hero-art {
     order: -1;
+  }
+
+  .hero-art-image {
+    max-width: 100%;
   }
 }
